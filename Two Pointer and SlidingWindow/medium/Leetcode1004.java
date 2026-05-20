@@ -22,7 +22,31 @@
 // Output: 10
 // Explanation: [0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1]
 // Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
+
+//brute
 class Solution {
+    public int longestOnes(int[] nums, int k) {
+    int n =nums.length;
+   
+    int max=0;
+
+    for(int i=0;i<n;i++){
+         int zero=0;
+        for(int j=i;j<n;j++){
+            if(nums[j]==0){
+            zero++;
+            }
+            if(zero<=k){
+max =Math.max(max,j-i+1);
+            }
+        }
+    }
+    return max;
+    }
+//optimal
+class Solution {
+
+
     public int longestOnes(int[] nums, int k) {
        int n=nums.length;
        int left=0;
@@ -47,3 +71,5 @@ max=Math.max(max,right-left+1);
        return max;
     }
 }
+
+
