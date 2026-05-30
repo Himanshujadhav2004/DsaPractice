@@ -48,8 +48,9 @@ int window = r-l+1;
 if(window-maxfreq>k){
     freq[s.charAt(l)-'A']--;
     l++;
+    window =r-l+1;
 }
-window =r-l+1;
+
 maxlen =Math.max(maxlen,window);
 }
 return  maxlen ;
