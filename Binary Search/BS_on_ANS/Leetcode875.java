@@ -66,3 +66,40 @@ int reqtime =0;
    return total;
     }
 }
+
+//optimal using bs
+
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+        int max =Integer.MIN_VALUE;
+        int n =piles.length;
+        for(int i=0;i<n;i++){
+            max =Math.max(max,piles[i]);  
+                  }
+        int ans =max;
+
+        int low =0;
+        int high =max-1;
+        while(low<=high){
+            int mid =low +(high-low)/2;
+            int totalhrs =totalfunc(piles,mid);
+            if(totalhrs<=h){
+                 high =mid-1;
+            }
+            else{
+                low=mid+1;
+            }
+        
+        }
+            return low;
+    }
+
+    public int totalfunc(int piles[] ,int hrs){
+        int totalre=0;
+
+        for(int i=0;i<piles.length;i++){
+            totalre+=Math.ceil((double)piles[i]/hrs);
+        }
+        return totalre;
+    }
+}
